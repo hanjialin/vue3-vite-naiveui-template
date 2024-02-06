@@ -2,6 +2,9 @@
   "name": "vue3-vite3-naiveui-template",
   "private": true,
   "version": "0.0.1",
+  "engines": {
+    "node": ">=18 <20"
+  },
   "scripts": {
     "dev": "vite --mode development",
     "pro": "vite --mode production",
