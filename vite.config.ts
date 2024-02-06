@@ -4,7 +4,6 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
-// import VitePluginHtmlEnv from 'vite-plugin-html-env'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,9 +20,6 @@ export default defineConfig({
     Components({
       resolvers: [NaiveUiResolver()]
     })
-    /*    VitePluginHtmlEnv({
-      compiler: true
-    })*/
   ],
   server: {
     host: '0.0.0.0',
