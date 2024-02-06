@@ -64,11 +64,11 @@ module.exports = {
     'no-else-return': 'warn',
     // 禁止出现空函数
     'no-empty-function': 'warn',
-    // 禁用不必要的嵌套块
+    // 禁用不必要地嵌套块
     'no-lone-blocks': 'warn',
     // 禁止使用多个空格
     'no-multi-spaces': 'warn',
-    // 禁止多次声明同一变量
+    // 禁止多次重复声明同一变量
     'no-redeclare': 'warn',
     // 禁止在 return 语句中使用赋值语句
     'no-return-assign': 'warn',
@@ -92,7 +92,7 @@ module.exports = {
     'brace-style': 'warn',
     // 强制使用骆驼拼写法命名约定
     camelcase: 'warn',
-    // 强制使用一致的缩进
+    // 强制使用一致缩进
     indent: 'off',
     // 强制在 JSX 属性中一致地使用双引号或单引号
     // 'jsx-quotes': 'warn',
