@@ -1,0 +1,41 @@
+//@import 'vxe-table/styles/variable.scss';
+$vxe-font-family: HarmonyOsHans, sans-serif !important;
+$vxe-font-size:15px;
+$vxe-table-header-font-weight: 900 !important;
+$vxe-table-header-font-color: #3b70f4;
+$vxe-font-color:#3c3c3c;
+$vxe-primary-color:#3b70f4;
+//$vxe-font-size-mini:13px;
+@import 'vxe-table/styles/index.scss';
+.vxe-table--tooltip-wrapper {
+  font-size: 14px !important;
+}
+//@import 'vxe-table/styles/modules.scss';
+//@import 'vxe-table/styles/icon.scss';
+//@import 'vxe-table/styles/filter.scss';
+//@import 'vxe-table/styles/menu.scss';
+//@import 'vxe-table/styles/export.scss';
+//
+//@import 'vxe-table/styles/table.scss';
+//@import 'vxe-table/styles/grid.scss';
+//@import 'vxe-table/styles/toolbar.scss';
+//@import 'vxe-table/styles/pager.scss';
+//@import 'vxe-table/styles/checkbox.scss';
+//@import 'vxe-table/styles/checkbox-group.scss';
+//@import 'vxe-table/styles/radio.scss';
+//@import 'vxe-table/styles/radio-group.scss';
+//@import 'vxe-table/styles/radio-button.scss';
+//@import 'vxe-table/styles/input.scss';
+//@import 'vxe-table/styles/textarea.scss';
+//@import 'vxe-table/styles/button.scss';
+//@import 'vxe-table/styles/modal.scss';
+//@import 'vxe-table/styles/tooltip.scss';
+//@import 'vxe-table/styles/form.scss';
+//@import 'vxe-table/styles/form-item.scss';
+//@import 'vxe-table/styles/form-gather.scss';
+//@import 'vxe-table/styles/select.scss';
+//@import 'vxe-table/styles/optgroup.scss';
+//@import 'vxe-table/styles/option.scss';
+//@import 'vxe-table/styles/switch.scss';
+//@import 'vxe-table/styles/list.scss';
+//@import 'vxe-table/styles/pulldown.scss';
