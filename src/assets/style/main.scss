@@ -1,1 +1,8 @@
 //全局样式可以在这里定义
+/*设置web字体全局使用HarmonyOsHans*/
+@font-face {
+  font-family: 'HarmonyOsHans';
+  font-style: normal;
+  font-display: fallback;
+  font-weight: auto;
+}
