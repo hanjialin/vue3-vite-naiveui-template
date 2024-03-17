@@ -7,6 +7,7 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/',
   plugins: [
     vue(),
     AutoImport({
@@ -45,6 +46,18 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true
+      }
+    },
+    rollupOptions: {
+      output: {
+        entryFileNames: 'js/[name]-[hash].js',
+        chunkFileNames: 'js/[name]-[hash].js',
+        assetFileNames(chunkInfo) {
+          if (chunkInfo.name.endsWith('.css')) {
+            return 'css/[name]-[hash].css'
+          }
+          return 'assets/[name]-[hash].[ext]'
+        }
       }
     }
   }
