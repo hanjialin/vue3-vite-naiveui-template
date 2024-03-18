@@ -50,11 +50,26 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        entryFileNames: 'js/[name]-[hash].js',
-        chunkFileNames: 'js/[name]-[hash].js',
+        manualChunks(id) {
+          //配置分块
+          if (id.includes('node_modules')) {
+            return id.toString().split('node_modules/')[1].split('/')[0].toString()
+          }
+        },
+        entryFileNames: 'js/[name]-[hash].js', //配置JS入口打包文件路径
+        chunkFileNames: 'js/[name]-[hash].js', //配置其余JS打包文件路径
         assetFileNames(chunkInfo) {
+          //配置静态文件打包文件路径
           if (chunkInfo.name.endsWith('.css')) {
             return 'css/[name]-[hash].css'
+          }
+          const fontExtArray = ['eot', 'woff', 'woff2', 'ttf']
+          if (fontExtArray.some((ext) => chunkInfo.name.endsWith(ext))) {
+            return 'fonts/[name]-[hash].[ext]'
+          }
+          const imgExtArray = ['png', 'jpg', 'jpeg', 'gif', 'svg']
+          if (imgExtArray.some((ext) => chunkInfo.name.endsWith(ext))) {
+            return 'img/[name]-[hash].[ext]'
           }
           return 'assets/[name]-[hash].[ext]'
         }
