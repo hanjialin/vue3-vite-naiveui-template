@@ -6,8 +6,11 @@
     <a href="https://vuejs.org/" target="_blank">
       <img src="../../assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
+    <a href="https://vitest.dev/" target="_blank">
+      <img src="../../assets/vitest.svg" class="logo vitest" alt="Vue logo" />
+    </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <HelloWorld msg="Vite + Vue + Vitest" />
 </template>
 
 <script lang="ts" setup>
@@ -28,5 +31,8 @@ setTimeout(() => {
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+.logo.vitest:hover {
+  filter: drop-shadow(0 0 2em #fcc72baa);
 }
 </style>

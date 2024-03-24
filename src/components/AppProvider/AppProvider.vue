@@ -5,17 +5,17 @@
     :theme="getDarkTheme"
     :theme-overrides="themeOverrides"
   >
-    <ScreenAdaptation height="1080">
-      <n-loading-bar-provider>
-        <n-dialog-provider>
-          <n-notification-provider>
-            <n-message-provider>
-              <App />
-            </n-message-provider>
-          </n-notification-provider>
-        </n-dialog-provider>
-      </n-loading-bar-provider>
-    </ScreenAdaptation>
+    <!--    <ScreenAdaptation height="1080">-->
+    <n-loading-bar-provider>
+      <n-dialog-provider>
+        <n-notification-provider>
+          <n-message-provider>
+            <App />
+          </n-message-provider>
+        </n-notification-provider>
+      </n-dialog-provider>
+    </n-loading-bar-provider>
+    <!--    </ScreenAdaptation>-->
   </n-config-provider>
 </template>
 
@@ -42,6 +42,7 @@ const themeOverrides = computed(() => {
   console.log(popoverColor)
   return {
     common: {
+      fontFamily: 'RobotoCondensed,SourceHanSansCN, sans-serif',
       primaryColor: appTheme,
       primaryColorHover: lightenStr,
       primaryColorPressed: lightenStr,
@@ -49,7 +50,6 @@ const themeOverrides = computed(() => {
     }
   }
 })
-//fontFamily: 'RobotoCondensed,SourceHanSansCN, sans-serif',
 </script>
 
 <style lang="scss" scoped></style>

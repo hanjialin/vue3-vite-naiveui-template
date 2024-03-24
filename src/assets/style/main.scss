@@ -1,8 +1,22 @@
 //全局样式可以在这里定义
-/*设置web字体全局使用HarmonyOsHans*/
 @font-face {
-  font-family: 'HarmonyOsHans';
+  font-family: 'SourceHanSansCN';
   font-style: normal;
-  font-display: fallback;
+  font-weight: normal;
+  src: url("/src/assets/font/SourceHanSansCN-Regular.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'SourceHanSansCN';
+  font-style: normal;
+  font-weight: bold;
+  src: url("/src/assets/font/SourceHanSansCN-Bold.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'RobotoCondensed';
+  font-style: normal;
   font-weight: auto;
+  src: url("/src/assets/font/Roboto-Condensed.ttf");
+}
+html,body{
+  font-family: RobotoCondensed,SourceHanSansCN, sans-serif;
 }

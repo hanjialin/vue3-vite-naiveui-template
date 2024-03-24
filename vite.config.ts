@@ -34,11 +34,11 @@ export default defineConfig({
     }
   },
   css: {
-    preprocessorOptions: {
+    /*preprocessorOptions: {
       scss: {
         additionalData: `@import "@/assets/style/main.scss";`
       }
-    }
+    }*/
   },
   build: {
     minify: 'terser',
