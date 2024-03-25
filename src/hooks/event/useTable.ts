@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import XEUtils, { isEmpty } from 'xe-utils'
+import XEUtils from 'xe-utils'
 import VXETablePluginExportXLSX from 'vxe-table-plugin-export-xlsx'
 import { pageSize } from '@/hooks/web/config/pagination'
 import {
@@ -81,9 +81,9 @@ VXETable.formats.mixin({
     cellFormatMethod: ({ cellValue }) => {
       if (XEUtils.isNull(cellValue)) {
         return '--'
-      } else if (cellValue == 'null') {
+      } else if (cellValue === 'null') {
         return '--'
-      } else if (cellValue == '') {
+      } else if (cellValue === '') {
         return '--'
       }
       return cellValue

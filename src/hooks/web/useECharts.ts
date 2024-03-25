@@ -5,7 +5,7 @@ import { useTimeoutFn } from '@/hooks/core/useTimeout'
 import { Fn, tryOnUnmounted } from '@vueuse/core'
 import { unref, nextTick, watch, computed, ref } from 'vue'
 import { useDebounceFn } from '@vueuse/core'
-import { useEventListener } from '@/hooks/event/useEventListener'
+// import { useEventListener } from '@/hooks/event/useEventListener'
 import { useBreakpoint } from '@/hooks/event/useBreakpoint'
 
 import echarts from '@/plugins/echarts'
@@ -31,7 +31,9 @@ export function useECharts(
   let chartInstance: echarts.ECharts | null = null
   let resizeFn: Fn = resize
   const cacheOptions = ref({})
-  const removeResizeFn: Fn = () => {}
+  const removeResizeFn: Fn = () => {
+    return true
+  }
   resizeFn = useDebounceFn(resize, 200)
 
   const getOptions = computed((): EChartsOption => {

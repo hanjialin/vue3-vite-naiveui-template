@@ -27,7 +27,7 @@ import designSetting from '@/config/theme/designSetting'
 import { lighten } from '@/config/theme/transLighten'
 import { darkTheme } from 'naive-ui'
 import { computed } from 'vue'
-import ScreenAdaptation from '@/components/ScreenAdaptation/ScreenAdaptation.vue' //配置默认暗黑主题
+// import ScreenAdaptation from '@/components/ScreenAdaptation/ScreenAdaptation.vue'
 const { zhCN, dateZhCN, theme, changeThemeOs } = useConfig() //theme 使用默认主题配置
 const designStore = useDesignSettingStore()
 const getDarkTheme = computed(() => (designStore.darkTheme === 'dark' ? darkTheme : null))
@@ -39,8 +39,6 @@ const dateLocale = dateZhCN
 const themeOverrides = computed(() => {
   const appTheme = designSetting.appTheme
   const lightenStr = lighten(designStore.appTheme, 6)
-  const popoverColor = lighten('#021736', 6)
-  console.log(popoverColor)
   return {
     common: {
       fontFamily: 'RobotoCondensed,SourceHanSansCN, sans-serif',
