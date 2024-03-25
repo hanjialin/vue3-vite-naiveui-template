@@ -10,7 +10,7 @@ import { useBreakpoint } from '@/hooks/event/useBreakpoint'
 
 import echarts from '@/plugins/echarts'
 
-import { useDesignSetting } from '@/hooks/setting/useDesignSetting'
+import { useDesignSetting } from '@/config/theme/useDesignSetting'
 // @ts-ignore
 import elementResize from 'element-resize-detector'
 

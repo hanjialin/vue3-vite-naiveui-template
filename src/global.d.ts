@@ -7,4 +7,6 @@ declare global {
     $notification: import('naive-ui').NotificationApi
     $loadingBar: import('naive-ui').LoadingBarApi
   }
+  declare type TimeoutHandle = ReturnType<typeof setTimeout>
+  declare module 'element-resize-detector'
 }

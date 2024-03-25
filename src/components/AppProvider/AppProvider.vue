@@ -29,11 +29,12 @@ import { darkTheme } from 'naive-ui'
 import { computed } from 'vue'
 import ScreenAdaptation from '@/components/ScreenAdaptation/ScreenAdaptation.vue' //配置默认暗黑主题
 const { zhCN, dateZhCN, theme, changeThemeOs } = useConfig() //theme 使用默认主题配置
+const designStore = useDesignSettingStore()
 const getDarkTheme = computed(() => (designStore.darkTheme === 'dark' ? darkTheme : null))
 // changeThemeOs() //获取系统主题,并改变theme的值
 const locale = zhCN
 const dateLocale = dateZhCN
-const designStore = useDesignSettingStore()
+
 // const osTheme = theme
 const themeOverrides = computed(() => {
   const appTheme = designSetting.appTheme

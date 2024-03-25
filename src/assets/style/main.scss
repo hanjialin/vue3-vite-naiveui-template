@@ -3,20 +3,21 @@
   font-family: 'SourceHanSansCN';
   font-style: normal;
   font-weight: normal;
-  src: url("/src/assets/font/SourceHanSansCN-Regular.woff2") format('woff2');
+  src: url('/src/assets/font/SourceHanSansCN-Regular.woff2') format('woff2');
 }
 @font-face {
   font-family: 'SourceHanSansCN';
   font-style: normal;
   font-weight: bold;
-  src: url("/src/assets/font/SourceHanSansCN-Bold.woff2") format('woff2');
+  src: url('/src/assets/font/SourceHanSansCN-Bold.woff2') format('woff2');
 }
 @font-face {
   font-family: 'RobotoCondensed';
   font-style: normal;
   font-weight: auto;
-  src: url("/src/assets/font/Roboto-Condensed.ttf");
+  src: url('/src/assets/font/Roboto-Condensed.ttf');
 }
-html,body{
-  font-family: RobotoCondensed,SourceHanSansCN, sans-serif;
+html,
+body {
+  font-family: RobotoCondensed, SourceHanSansCN, sans-serif;
 }
