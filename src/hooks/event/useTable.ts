@@ -77,15 +77,17 @@ VXETable.config({
 //调用xlsx导出
 VXETable.use(VXETablePluginExportXLSX)
 VXETable.formats.mixin({
-  isNull: ({ cellValue }) => {
-    if (XEUtils.isNull(cellValue)) {
-      return '--'
-    } else if (cellValue == 'null') {
-      return '--'
-    } else if (cellValue == '') {
-      return '--'
+  isNull: {
+    cellFormatMethod: ({ cellValue }) => {
+      if (XEUtils.isNull(cellValue)) {
+        return '--'
+      } else if (cellValue == 'null') {
+        return '--'
+      } else if (cellValue == '') {
+        return '--'
+      }
+      return cellValue
     }
-    return cellValue
   }
 })
 
