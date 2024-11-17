@@ -1,3 +1,5 @@
+import { isObject } from '@/hooks/utils/tools/is'
+
 type CustomObject = {
   [key: string]: any
 }
@@ -8,19 +10,18 @@ type CustomObject = {
  * @time 2024/2/8 10:35
  * */
 const getFormData = <T extends CustomObject>(object: T) => {
-  const formData = new FormData()
-
-  if (JSON.stringify(object) === '{}') {
-    throw new Error('不可传递空对象进行FormData转换')
+  if (isObject(object)) {
+    const formData = new FormData()
+    Object.keys(object).forEach((key) => {
+      const value = object[key]
+      if (Array.isArray(value)) {
+        value.forEach((subValue, i) => formData.append(key, subValue))
+      } else {
+        formData.append(key, object[key])
+      }
+    })
+    return formData
   }
-  Object.keys(object).forEach((key) => {
-    const value = object[key]
-    if (Array.isArray(value)) {
-      value.forEach((subValue, i) => formData.append(key, subValue))
-    } else {
-      formData.append(key, object[key])
-    }
-  })
-  return formData
+  throw new Error('只接受有值对象进行FormData转换')
 }
 export default getFormData
