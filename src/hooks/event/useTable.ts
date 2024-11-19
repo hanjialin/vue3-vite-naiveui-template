@@ -3,50 +3,26 @@ import XEUtils from 'xe-utils'
 import VXETablePluginExportXLSX from 'vxe-table-plugin-export-xlsx'
 import { pageSize } from '@/hooks/web/config/pagination'
 import {
-  // 全局对象
-  VXETable,
-  // 表格功能
-  Icon,
-  // Filter,
-  // Edit,
-  // Menu,
-  Export,
-  Keyboard,
-  // Validator,
-
-  // 可选组件
-  Column,
-  Colgroup,
-  Grid,
-  Tooltip,
-  Toolbar,
-  Pager,
-  // Form,
-  // FormItem,
-  // FormGather,
-  Checkbox,
-  CheckboxGroup,
-  Radio,
-  // RadioGroup,
-  // RadioButton,
-  // Switch,
-  Input,
-  Select,
-  // Optgroup,
-  // Option,
-  // Textarea,
-  Button,
-  Modal,
-  // List,
-  // Pulldown,
-
-  // 表格
-  Table
-} from 'vxe-table'
-import zhCN from 'vxe-table/es/locale/lang/zh-CN'
+  VxeUI,
+  VxeButton,
+  VxeButtonGroup,
+  VxeForm,
+  VxeFormGroup,
+  VxeFormItem,
+  VxeIcon,
+  VxeLoading,
+  VxeModal,
+  VxePager,
+  VxePrint,
+  VxeTooltip
+} from 'vxe-pc-ui'
+import { VxeTable, VxeColumn, VxeColgroup, VxeGrid, VxeToolbar } from 'vxe-table'
+// import zhCN from 'vxe-table/es/locale/lang/zh-CN'
+import zhCN from 'vxe-pc-ui/lib/language/zh-CN'
 import '@/assets/style/vxe_table.scss'
 // 按需加载的方式默认是不带国际化的，自定义国际化需要自行解析占位符 '{0}'，例如：
-VXETable.config({
+VxeUI.setConfig({
+  size: 'small',
   i18n: (key, args) => XEUtils.toFormatString(XEUtils.get(zhCN, key), args),
   pager: {
     size: 'small',
@@ -75,8 +51,8 @@ VXETable.config({
   }
 })
 //调用xlsx导出
-VXETable.use(VXETablePluginExportXLSX)
-VXETable.formats.mixin({
+VxeUI.use(VXETablePluginExportXLSX)
+VxeUI.formats.mixin({
   isNull: {
     cellFormatMethod: ({ cellValue }) => {
       if (XEUtils.isNull(cellValue)) {
@@ -93,43 +69,22 @@ VXETable.formats.mixin({
 
 export function useTable(app: App) {
   // 表格功能
-  app
-    .use(Icon)
-    // .use(Filter)
-    // .use(Edit)
-    // .use(Menu)
-    .use(Export)
-    .use(Keyboard)
-    // .use(Validator)
-
-    // 可选组件
-    .use(Column)
-    .use(Colgroup)
-    .use(Grid)
-    .use(Tooltip)
-    .use(Toolbar)
-    .use(Pager)
-    // .use(Form)
-    // .use(FormItem)
-    // .use(FormGather)
-    .use(Checkbox)
-    .use(CheckboxGroup)
-    .use(Radio)
-    // .use(RadioGroup)
-    // .use(RadioButton)
-    // .use(Switch)
-    .use(Input)
-    .use(Select)
-    // .use(Optgroup)
-    // .use(Option)
-    // .use(Textarea)
-    .use(Button)
-    .use(Modal)
-    // .use(List)
-    // .use(Pulldown)
-
-    // 安装表格
-    .use(Table)
+  app.use(VxeButton)
+  app.use(VxeButtonGroup)
+  app.use(VxeForm)
+  app.use(VxeFormGroup)
+  app.use(VxeFormItem)
+  app.use(VxeIcon)
+  app.use(VxeLoading)
+  app.use(VxeModal)
+  app.use(VxePager)
+  app.use(VxePrint)
+  app.use(VxeTooltip)
+  app.use(VxeTable)
+  app.use(VxeColumn)
+  app.use(VxeColgroup)
+  app.use(VxeGrid)
+  app.use(VxeToolbar)
 
   // 给 vue 实例挂载内部对象，例如：
   // app.config.globalProperties.$XModal = VXETable.modal

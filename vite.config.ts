@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import { lazyImport, VxeResolver } from 'vite-plugin-lazy-import'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,12 +21,18 @@ export default defineConfig({
     }),
     Components({
       resolvers: [NaiveUiResolver()]
+    }),
+    lazyImport({
+      resolvers: [
+        VxeResolver({ libraryName: 'vxe-table' }),
+        VxeResolver({ libraryName: 'vxe-pc-ui' })
+      ]
     })
   ],
   server: {
     host: '0.0.0.0',
     port: 3000,
-    open: true,
+    open: false,
     proxy: {}
   },
   resolve: {
