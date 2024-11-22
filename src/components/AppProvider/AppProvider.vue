@@ -41,7 +41,7 @@ const themeOverrides = computed(() => {
   const lightenStr = lighten(designStore.appTheme, 6)
   return {
     common: {
-      fontFamily: 'RobotoCondensed,SourceHanSansCN, sans-serif',
+      fontFamily: 'RobotoCondensed, SourceHanSansCN, sans-serif',
       primaryColor: appTheme,
       primaryColorHover: lightenStr,
       primaryColorPressed: lightenStr,

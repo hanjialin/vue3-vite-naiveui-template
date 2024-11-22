@@ -32,8 +32,8 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 3000,
-    open: false,
-    proxy: {}
+    open: false
+    // proxy: {}
   },
   resolve: {
     alias: {
@@ -41,11 +41,11 @@ export default defineConfig({
     }
   },
   css: {
-    /*preprocessorOptions: {
+    preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/assets/style/main.scss";`
+        api: 'modern-compiler'
       }
-    }*/
+    }
   },
   build: {
     minify: 'terser',

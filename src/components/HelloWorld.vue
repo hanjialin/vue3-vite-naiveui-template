@@ -8,7 +8,7 @@ const count = ref(0)
 <template>
   <div>
     <h1>{{ msg }}</h1>
-    <n-flex justify="center">
+    <!--    <n-flex justify="center">
       <n-card style="width: 800px" hoverable>
         <n-button type="primary" @click="count++">count is {{ count }}</n-button>
         <p>
@@ -19,7 +19,7 @@ const count = ref(0)
         </p>
         <n-date-picker />
       </n-card>
-    </n-flex>
+    </n-flex>-->
     <p>
       Check out
       <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank">create-vue</a>, the

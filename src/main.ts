@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import 'normalize.css/normalize.css'
 import '@/assets/style/main.scss'
-import './style.css'
+// import './style.css'
 //在app.vue外再包裹一层naive-ui的内容
 import AppProvider from '@/components/AppProvider/AppProvider.vue'
 import router from '@/router'

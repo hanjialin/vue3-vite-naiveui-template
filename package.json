@@ -18,11 +18,13 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "@vicons/ionicons5": "^0.12.0",
     "@vueuse/core": "^11.2.0",
+    "@vxe-ui/plugin-export-xlsx": "4.0.7",
     "axios": "^1.7.7",
     "echarts": "^5.5.1",
     "element-resize-detector": "^1.2.4",
-    "exceljs": "^4.4.0",
+    "exceljs": "4.2.1",
     "js-cookie": "^3.0.5",
     "normalize.css": "^8.0.1",
     "pinia": "^2.2.6",
@@ -31,7 +33,6 @@
     "vue": "^3.5.13",
     "vue-router": "^4.4.5",
     "vxe-table": "^4.8.10",
-    "vxe-table-plugin-export-xlsx": "^4.0.1",
     "xe-utils": "^3.5.31"
   },
   "devDependencies": {

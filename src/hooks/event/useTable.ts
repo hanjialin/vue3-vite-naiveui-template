@@ -1,6 +1,5 @@
 import { App } from 'vue'
 import XEUtils from 'xe-utils'
-import VXETablePluginExportXLSX from 'vxe-table-plugin-export-xlsx'
 import { pageSize } from '@/hooks/web/config/pagination'
 import {
   VxeUI,
@@ -17,9 +16,10 @@ import {
   VxeTooltip
 } from 'vxe-pc-ui'
 import { VxeTable, VxeColumn, VxeColgroup, VxeGrid, VxeToolbar } from 'vxe-table'
-// import zhCN from 'vxe-table/es/locale/lang/zh-CN'
 import zhCN from 'vxe-pc-ui/lib/language/zh-CN'
 import '@/assets/style/vxe_table.scss'
+import VxeUIPluginExportXLSX from '@vxe-ui/plugin-export-xlsx'
+import ExcelJS from 'exceljs'
 // 按需加载的方式默认是不带国际化的，自定义国际化需要自行解析占位符 '{0}'，例如：
 VxeUI.setConfig({
   size: 'small',
@@ -51,7 +51,7 @@ VxeUI.setConfig({
   }
 })
 //调用xlsx导出
-VxeUI.use(VXETablePluginExportXLSX)
+VxeUI.use(VxeUIPluginExportXLSX, { ExcelJS })
 VxeUI.formats.mixin({
   isNull: {
     cellFormatMethod: ({ cellValue }) => {

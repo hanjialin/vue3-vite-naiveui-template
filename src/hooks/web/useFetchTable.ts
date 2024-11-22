@@ -6,7 +6,12 @@
  * */
 import { AxiosPromise } from 'axios'
 import { onMounted, reactive, Ref, ref, toRef } from 'vue'
-import VXETable, { VxeGridInstance, VxePagerDefines, VxeTableInstance } from 'vxe-table'
+import VXETable, {
+  VxeGridInstance,
+  VxePagerDefines,
+  VxePagerProps,
+  VxeTableInstance
+} from 'vxe-table'
 import { lastObjectEach } from 'xe-utils'
 import { pageSize } from '@/hooks/web/config/pagination'
 
@@ -47,9 +52,9 @@ export default (props: fetchTableProps) => {
   /*  onMounted(() => {*/
   loadData()
   // })
-  const pageChange = (type: VxePagerDefines.PagerEventParams) => {
-    pager.value.page = type.currentPage
-    pager.value.limit = type.pageSize
+  const pageChange = (type: VxePagerProps) => {
+    pager.value.page = type.currentPage as number
+    pager.value.limit = type.pageSize as number
     loading.value = true
     loadData()
   }
