@@ -1,19 +1,25 @@
 <template>
   <n-layout-header bordered>
-    <n-menu v-model:value="selectValue" mode="horizontal" :options="menuOptions"></n-menu>
+    <n-space justify="space-between" align="center" style="padding: 0 15px; box-sizing: border-box">
+      <n-menu v-model:value="selectValue" mode="horizontal" :options="menuOptions"></n-menu>
+      <n-button text @click="designStore.change()">{{
+        designStore.getDarkTheme === 'dark' ? '暗色' : '亮色'
+      }}</n-button>
+    </n-space>
   </n-layout-header>
 </template>
 
 <script setup lang="ts">
-import { RouterLink, useRoute, useRouter } from 'vue-router'
-import { onMounted, ref, h, Component } from 'vue'
+import { RouterLink } from 'vue-router'
+import { ref, h, Component } from 'vue'
 import { MenuOption, NIcon } from 'naive-ui'
 import {
-  BookOutline as BookIcon,
+  StatsChart as ChartIcon,
   Home as HomeIcon,
-  PersonOutline as PersonIcon,
-  WineOutline as WineIcon
+  ReorderFour as ReorderFourIcon
 } from '@vicons/ionicons5'
+import { useDesignSettingStore } from '@/store/modules/designSetting'
+const designStore = useDesignSettingStore()
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
@@ -45,7 +51,7 @@ const menuOptions = ref<MenuOption[]>([
         { default: () => '图表' }
       ),
     key: 'chart',
-    icon: renderIcon(HomeIcon)
+    icon: renderIcon(ChartIcon)
   },
   {
     label: () =>
@@ -59,7 +65,7 @@ const menuOptions = ref<MenuOption[]>([
         { default: () => '表格' }
       ),
     key: 'table',
-    icon: renderIcon(HomeIcon)
+    icon: renderIcon(ReorderFourIcon)
   }
 ])
 </script>
