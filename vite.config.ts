@@ -5,7 +5,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import { lazyImport, VxeResolver } from 'vite-plugin-lazy-import'
-
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/',
@@ -40,6 +39,9 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  json: {
+    stringify: false
+  },
   css: {
     preprocessorOptions: {
       scss: {
@@ -51,8 +53,10 @@ export default defineConfig({
     minify: 'terser',
     terserOptions: {
       compress: {
+        dead_code: true,
         drop_console: true,
-        drop_debugger: true
+        drop_debugger: true,
+        pure_funcs: ['console.log']
       }
     },
     rollupOptions: {

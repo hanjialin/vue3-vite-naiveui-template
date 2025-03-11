@@ -54,7 +54,7 @@ VxeUI.setConfig({
 VxeUI.use(VxeUIPluginExportXLSX, { ExcelJS })
 VxeUI.formats.mixin({
   isNull: {
-    cellFormatMethod: ({ cellValue }) => {
+    tableCellFormatMethod: ({ cellValue }) => {
       if (XEUtils.isNull(cellValue)) {
         return '--'
       } else if (cellValue === 'null') {
