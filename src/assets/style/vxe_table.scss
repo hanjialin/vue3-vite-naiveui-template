@@ -1,7 +1,9 @@
-:root{
+:root {
   /*定义全局字体*/
   /*font*/
-  --vxe-ui-font-family: RobotoCondensed,HarmonyOsHans,-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol !important;
+  --vxe-ui-font-family: RobotoCondensed, HarmonyOsHans, -apple-system, BlinkMacSystemFont, Segoe UI,
+    PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol !important;
 
   /*font size*/
   --vxe-ui-font-size-large: 15px;
@@ -11,9 +13,8 @@
   --vxe-ui-font-size-mini: 12px;
 }
 /* 明亮主题 */
-html[data-vxe-ui-theme="light"] {
+html[data-vxe-ui-theme='light'] {
 }
 /* 暗黑主题 */
-html[data-vxe-ui-theme="dark"] {
+html[data-vxe-ui-theme='dark'] {
 }
-
