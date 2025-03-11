@@ -7,6 +7,7 @@ import AppProvider from '@/components/AppProvider/AppProvider.vue'
 import router from '@/router'
 import { useTable } from '@/hooks/event/useTable'
 import { setupStore } from '@/store'
+
 /*
  * @desc 等待路由加载完毕再进行内容挂载
  * @author HanJiaLin

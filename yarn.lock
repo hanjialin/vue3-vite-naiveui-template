@@ -3323,6 +3323,13 @@ uuid@^8.3.0:
   resolved "https://registry.npmmirror.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
+v-screen-adaptation@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.npmjs.org/v-screen-adaptation/-/v-screen-adaptation-0.0.6.tgz#e1636fd497698d07c4175dee8dfce44f5055f7fa"
+  integrity sha512-WHtWfLaAyqexhLvVDElAJz3TLvYX1MRITbiSMbP21m9sy5eU9MDt9t25Dhf4P+r/veMnVJgLQfZWYxwCCKoT1w==
+  dependencies:
+    lodash-es "^4.17.21"
+
 vdirs@^0.1.4, vdirs@^0.1.8:
   version "0.1.8"
   resolved "https://registry.npmmirror.com/vdirs/-/vdirs-0.1.8.tgz#a103bc43baca738f8dea912a7e9737154a19dbc2"

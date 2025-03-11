@@ -1,5 +1,5 @@
 <template>
-  <div>表格</div>
+  <div>表格测试提交</div>
 </template>
 
 <script setup lang="ts"></script>
