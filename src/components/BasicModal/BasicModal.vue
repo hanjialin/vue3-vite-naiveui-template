@@ -1,15 +1,15 @@
 <template>
   <n-modal
-    ref="basicModal"
+    ref="basicModel"
     :style="styleParams"
     preset="card"
     size="small"
     :title="props.title"
     header-class="basic-model-header"
+    content-class="basic-model-content"
     :close-on-esc="props.closeOnEsc"
     :auto-focus="false"
     v-bind="$attrs"
-    :draggable="props.isDraggable"
     @after-leave="afterLeave"
     @after-enter="afterEnter"
   >
@@ -22,9 +22,17 @@
       </n-button>
     </template>
     <template #default>
-      <div ref="basicModelContent" class="basic-model-content">
-        <slot name="default"></slot>
-      </div>
+      <n-scrollbar
+        :style="{ maxHeight: contentHeight }"
+        :content-style="isScroll ? {} : { height: '100%' }"
+      >
+        <div
+          :style="{ padding: props.defaultPadding }"
+          style="height: inherit; box-sizing: border-box"
+        >
+          <slot name="default"></slot>
+        </div>
+      </n-scrollbar>
     </template>
     <template v-if="$slots.action" #action>
       <slot name="action"></slot>
@@ -33,82 +41,64 @@
 </template>
 
 <script setup lang="ts">
+//todo: 1.外部给一个高度,高度-header-action,默认的;2.full-screen,height=100vh
 import { ResizeOutline } from '@vicons/ionicons5'
-import { ref, reactive, type CSSProperties, nextTick, onMounted, watch } from 'vue'
+import { ref, reactive, computed, type CSSProperties, useSlots } from 'vue'
 import { ModalProps } from 'naive-ui'
 interface BasicModalProps extends /* @vue-ignore */ ModalProps {
   title: string
   closeOnEsc?: boolean
   isFullScreen?: boolean
+  isScroll?: boolean
+  defaultPadding?: string
   styleParams?: CSSProperties
-  isDraggable: boolean
 }
 const emit = defineEmits(['fullScreenFn', 'closeModal'])
 const props = withDefaults(defineProps<BasicModalProps>(), {
   title: '',
   closeOnEsc: false,
   isFullScreen: false,
+  isScroll: true,
+  defaultPadding: '10px',
   styleParams: () => {
     return { width: '600px', height: 'auto' }
-  },
-  isDraggable: false
+  }
 })
-console.log('新设备')
-const basicModal = ref()
+const basicModel = ref()
 const styleParams = reactive<CSSProperties>(props.styleParams)
 const styleParamsCache = reactive({})
-const contentHeightCache = ref<number>(0)
 const fullScreenMode = ref(false)
 const fullScreen = () => {
-  if (basicModal.value) {
+  if (basicModel.value) {
     emit('fullScreenFn')
     if (fullScreenMode.value) {
       Object.assign(styleParams, styleParamsCache)
-      nextTick(() => {
-        basicModelContent.value.style.height = contentHeightCache.value + 'px'
-      })
-
       fullScreenMode.value = false
     } else {
-      Object.assign(styleParamsCache, basicModal.value.$attrs.style) //缓存原有样式
-      Object.assign(styleParams, { width: '100vw', height: '100vh', top: '0', left: '0' }) //设置全屏
+      Object.assign(styleParamsCache, basicModel.value.$attrs.style) //缓存原有样式
+      Object.assign(styleParams, { width: '100vw', height: '100vh' }) //设置全屏
       fullScreenMode.value = true
-      nextTick(() => {
-        basicModelContent.value.style.height = getContentHeight() + 'px'
-      })
     }
   }
 }
+const contentHeight = computed(() => {
+  if (styleParams.height !== 'auto') {
+    return `calc(${styleParams.height} - ${headerPlusAction.value}px)`
+  }
+  return 'auto'
+})
 const afterLeave = () => {
   Object.assign(styleParams, styleParamsCache)
 }
 const basicModelContent = ref()
-const getContentHeight = () => {
-  const computedStyle = window.getComputedStyle(basicModelContent.value.parentElement)
-  const paddingTop = parseFloat(computedStyle.paddingTop)
-  const paddingBottom = parseFloat(computedStyle.paddingBottom)
-  const clientHeight = basicModelContent.value.parentElement.clientHeight
-  return clientHeight - paddingTop - paddingBottom
-}
+const headerPlusAction = ref(0)
 const afterEnter = () => {
-  if (basicModelContent.value) {
-    basicModelContent.value.style.height = getContentHeight() + 'px'
-    contentHeightCache.value = getContentHeight()
-    emit('closeModal')
-  }
-  if (props.isDraggable) {
-    const father = document.getElementsByClassName('n-modal-container')
-    const shadow = document.getElementsByClassName('n-modal-mask')
-    for (let i = 0; i < father.length; i++) {
-      ;(father[i] as HTMLElement).style.pointerEvents = 'none'
-    }
-    for (let i = 0; i < shadow.length; i++) {
-      ;(shadow[i] as HTMLElement).style.background = 'rgba(0,0,0,0)'
-    }
-    if (basicModal.value) {
-      styleParams.pointerEvents = 'all'
-    }
-  }
+  const headerElement = document.querySelector('.n-card-header') as HTMLElement
+  const ActionElement = document.querySelector('.n-card__action') as HTMLElement
+  const headerHeight = headerElement?.offsetHeight || 0
+  const actionHeight = ActionElement?.offsetHeight || 0
+  headerPlusAction.value = headerHeight + actionHeight
+  emit('closeModal')
 }
 </script>
 
@@ -116,17 +106,22 @@ const afterEnter = () => {
 .basic-model-header {
   border-top-left-radius: 3px !important;
   border-top-right-radius: 3px !important;
-  //background: #3053b1 !important;
+  background: #3053b1 !important;
   letter-spacing: 0.05em;
   div,
   i {
-    //color: #fff !important;
+    color: #fff !important;
   }
 }
-.basic-model-content {
+/*.basic-model-content {
   width: 100%;
   height: 100%;
   padding-top: 12px;
   box-sizing: border-box;
+}*/
+.basic-model-content {
+  width: 100%;
+  padding: 0 !important;
+  overflow: hidden;
 }
 </style>
