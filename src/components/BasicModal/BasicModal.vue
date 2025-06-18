@@ -53,7 +53,7 @@ const props = withDefaults(defineProps<BasicModalProps>(), {
   },
   isDraggable: false
 })
-
+console.log('新设备')
 const basicModal = ref()
 const styleParams = reactive<CSSProperties>(props.styleParams)
 const styleParamsCache = reactive({})
