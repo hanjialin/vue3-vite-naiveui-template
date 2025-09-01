@@ -53,7 +53,7 @@ interface BasicModalProps extends /* @vue-ignore */ ModalProps {
   defaultPadding?: string
   styleParams?: CSSProperties
 }
-const emit = defineEmits(['fullScreenFn', 'closeModal'])
+const emit = defineEmits(['fullScreenCb', 'closeModal', 'openModal'])
 const props = withDefaults(defineProps<BasicModalProps>(), {
   title: '',
   closeOnEsc: false,
@@ -70,7 +70,7 @@ const styleParamsCache = reactive({})
 const fullScreenMode = ref(false)
 const fullScreen = () => {
   if (basicModel.value) {
-    emit('fullScreenFn')
+    emit('fullScreenCb')
     if (fullScreenMode.value) {
       Object.assign(styleParams, styleParamsCache)
       fullScreenMode.value = false
@@ -81,24 +81,31 @@ const fullScreen = () => {
     }
   }
 }
+const slots = useSlots()
 const contentHeight = computed(() => {
   if (styleParams.height !== 'auto') {
-    return `calc(${styleParams.height} - ${headerPlusAction.value}px)`
+    if (slots.action) {
+      return `calc(${styleParams.height} - ${headerPlusAction.value}px)`
+    }
+    return `calc(${styleParams.height} - ${justHeader.value}px)`
   }
   return 'auto'
 })
 const afterLeave = () => {
   Object.assign(styleParams, styleParamsCache)
+  emit('closeModal')
 }
 const basicModelContent = ref()
 const headerPlusAction = ref(0)
+const justHeader = ref(0)
 const afterEnter = () => {
   const headerElement = document.querySelector('.n-card-header') as HTMLElement
   const ActionElement = document.querySelector('.n-card__action') as HTMLElement
   const headerHeight = headerElement?.offsetHeight || 0
   const actionHeight = ActionElement?.offsetHeight || 0
   headerPlusAction.value = headerHeight + actionHeight
-  emit('closeModal')
+  justHeader.value = headerHeight
+  emit('openModal')
 }
 </script>
 
@@ -113,12 +120,7 @@ const afterEnter = () => {
     color: #fff !important;
   }
 }
-/*.basic-model-content {
-  width: 100%;
-  height: 100%;
-  padding-top: 12px;
-  box-sizing: border-box;
-}*/
+
 .basic-model-content {
   width: 100%;
   padding: 0 !important;
