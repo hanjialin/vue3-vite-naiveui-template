@@ -24,7 +24,7 @@
     <template #default>
       <n-scrollbar
         :style="{ maxHeight: contentHeight }"
-        :content-style="isScroll ? {} : { height: '100%' }"
+        :content-style="isScroll ? { minHeight: '100%' } : { height: '100%' }"
       >
         <div
           :style="{ padding: props.defaultPadding }"
