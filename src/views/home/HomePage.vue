@@ -31,6 +31,26 @@
     </basic-modal>
     <n-button @click="isShow = !isShow">测试弹窗</n-button>
     <n-button @click="isShowBro = !isShowBro">测试弹窗Bro</n-button>
+    <n-button
+      text-color="#fff"
+      color="rgba(57, 226, 255, 1)"
+      round
+      focusable
+      strong
+      style="background-image: linear-gradient(45deg, rgba(57, 226, 255, 1), rgba(38, 146, 255, 1))"
+      >打开弹窗A</n-button
+    >
+    <n-tag>啦啦啦</n-tag>
+    <n-button
+      size="small"
+      text-color="#fff"
+      color="rgba(80, 253, 154, 1)"
+      round
+      focusable
+      style="background-image: linear-gradient(45deg, rgba(80, 253, 154, 1), rgba(0, 194, 93, 1))"
+    >
+      打开弹窗B</n-button
+    >
     <div
       style="
         background: #1a1a1a;
@@ -52,4 +72,8 @@ const isShow = ref(false)
 const isShowBro = ref(false)
 </script>
 
-<style scoped></style>
+<style scoped>
+.logo {
+  background-image: linear-gradient(to right, rgba(57, 226, 255, 1), rgba(38, 146, 255, 1));
+}
+</style>
