@@ -1,6 +1,7 @@
 <template>
   <n-modal
     ref="basicModel"
+    v-model:show="showRef"
     :style="styleParams"
     preset="card"
     size="small"
@@ -14,10 +15,10 @@
     @after-enter="afterEnter"
   >
     <template #header-extra>
-      <slot v-if="$slots['header-extra-container']" name="header-extra-container"></slot>
+      <slot v-if="$slots['header-extra-container']" name="header-extra-container" />
       <n-button v-if="props.isFullScreen" size="small" quaternary @click="fullScreen">
         <template #icon>
-          <n-icon :component="ResizeOutline"></n-icon>
+          <n-icon :component="ResizeOutline" />
         </template>
       </n-button>
     </template>
@@ -53,7 +54,7 @@ interface BasicModalProps extends /* @vue-ignore */ ModalProps {
   defaultPadding?: string
   styleParams?: CSSProperties
 }
-const emit = defineEmits(['fullScreenCb', 'closeModal', 'openModal'])
+const emit = defineEmits(['fullScreenCallBack', 'closeModal', 'openModal'])
 const props = withDefaults(defineProps<BasicModalProps>(), {
   title: '',
   closeOnEsc: false,
@@ -70,7 +71,7 @@ const styleParamsCache = reactive({})
 const fullScreenMode = ref(false)
 const fullScreen = () => {
   if (basicModel.value) {
-    emit('fullScreenCb')
+    emit('fullScreenCallBack')
     if (fullScreenMode.value) {
       Object.assign(styleParams, styleParamsCache)
       fullScreenMode.value = false
@@ -107,6 +108,14 @@ const afterEnter = () => {
   justHeader.value = headerHeight
   emit('openModal')
 }
+const showRef = ref<boolean>(false)
+const showModal = () => {
+  showRef.value = true
+}
+const hideModal = () => {
+  showRef.value = false
+}
+defineExpose({ showModal, hideModal })
 </script>
 
 <style lang="scss">

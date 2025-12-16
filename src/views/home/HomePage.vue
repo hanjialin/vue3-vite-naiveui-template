@@ -16,7 +16,7 @@
       </template>
     </basic-modal>
     <basic-modal
-      v-model:show="isShowBro"
+      ref="testRef"
       title="测试封装弹窗组件1"
       :is-full-screen="true"
       :is-draggable="true"
@@ -30,7 +30,7 @@
       </template>
     </basic-modal>
     <n-button @click="isShow = !isShow">测试弹窗</n-button>
-    <n-button @click="isShowBro = !isShowBro">测试弹窗Bro</n-button>
+    <n-button @click="testWindow">测试弹窗Bro</n-button>
     <n-button
       text-color="#fff"
       color="rgba(57, 226, 255, 1)"
@@ -65,11 +65,18 @@
 
 <script setup lang="ts">
 import HelloWorld from '@/components/HelloWorld.vue'
-import { ref } from 'vue'
+import { ref, shallowRef, useTemplateRef } from 'vue'
 import BasicModal from '@/components/BasicModal/BasicModal.vue'
 
 const isShow = ref(false)
 const isShowBro = ref(false)
+const testRef = useTemplateRef('testRef')
+// const testRef = shallowRef('testRef')
+const testWindow = () => {
+  if (testRef.value) {
+    testRef.value.showModal()
+  }
+}
 </script>
 
 <style scoped>
