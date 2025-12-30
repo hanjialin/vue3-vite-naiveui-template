@@ -11,14 +11,24 @@
 <p>待到功成圆满日，欢歌同贺乐悠悠。</p>
 </div>
 
-[![stars](https://img.shields.io/github/stars/hanjialin/vue3-vite-naiveui-template?style=flat-square&logo=GitHub)](https://github.com/chuzhixin/vue-admin-beautiful)
-[![license](https://img.shields.io/github/license/chuzhixin/vue-admin-beautiful?style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
+[![stars](https://img.shields.io/github/stars/hanjialin/vue3-vite-naiveui-template?style=flat-square&logo=GitHub)](https://github.com/hanjialin/vue3-vite-naiveui-template)
+[![license](https://img.shields.io/github/license/hanjialin/vue3-vite-naiveui-template?style=flat-square)](https://github.com/hanjialin/vue3-vite-naiveui-template/blob/main/LICENSE)
 
 ---
 
 ## 🎉 版本
 
-基于 vite6.x + vue3.x + NaiveUI2.x + TypeScript5.x 的开发脚手架， 欢迎点击查看或试用 👏🏻👏🏻👏🏻
+基于以下技术栈的开发脚手架，欢迎点击查看或试用 👏🏻👏🏻👏🏻
+
+- **Vite**: 6.x (v6.2.1)
+- **Vue**: 3.x (v3.5.13)
+- **NaiveUI**: 2.x (v2.43.1)
+- **TypeScript**: 5.x (v5.3.3)
+- **Pinia**: 状态管理
+- **Vue Router**: 4.x
+- **Sass**: CSS 预处理器
+- **ECharts**: 图表库
+- **VXETable**: 表格组件
 
 [开源地址](https://github.com/hanjialin/vue3-vite-naiveui-template)
 
