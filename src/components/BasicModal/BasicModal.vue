@@ -1,7 +1,6 @@
 <template>
   <n-modal
     ref="basicModel"
-    v-model:show="showRef"
     :style="styleParams"
     preset="card"
     size="small"
