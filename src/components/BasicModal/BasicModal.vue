@@ -108,14 +108,6 @@ const afterEnter = () => {
   justHeader.value = headerHeight
   emit('openModal')
 }
-const showRef = ref<boolean>(false)
-const showModal = () => {
-  showRef.value = true
-}
-const hideModal = () => {
-  showRef.value = false
-}
-defineExpose({ showModal, hideModal })
 </script>
 
 <style lang="scss">
